@@ -15,7 +15,7 @@ interface SavedJobsListProps {
 
 export function SavedJobsList({ savedJobs, onUnsave }: SavedJobsListProps) {
   const formatSalary = (min: number, max: number, currency: string) => {
-    const formatter = new Intl.NumberFormat("en-US", {
+    const formatter = new Intl.NumberFormat("en-IN", { // Changed to en-IN for Indian Rupees
       style: "currency",
       currency,
       minimumFractionDigits: 0,

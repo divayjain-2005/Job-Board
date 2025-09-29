@@ -71,7 +71,7 @@ export function JobForm({ job, onSubmit, onCancel, loading = false }: JobFormPro
       salary: {
         min: Number.parseInt(formData.salaryMin),
         max: Number.parseInt(formData.salaryMax),
-        currency: "USD",
+        currency: "INR", // Changed from "USD"
       },
       description: formData.description,
       requirements: formData.requirements.split("\n").filter((req) => req.trim()),
@@ -186,22 +186,22 @@ export function JobForm({ job, onSubmit, onCancel, loading = false }: JobFormPro
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="salaryMin">Minimum Salary (USD) *</Label>
+                <Label htmlFor="salaryMin">Minimum Salary (INR) *</Label>
                 <Input
                   id="salaryMin"
                   type="number"
-                  placeholder="80000"
+                  placeholder="6000000"
                   value={formData.salaryMin}
                   onChange={(e) => updateFormData("salaryMin", e.target.value)}
                   required
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="salaryMax">Maximum Salary (USD) *</Label>
+                <Label htmlFor="salaryMax">Maximum Salary (INR) *</Label>
                 <Input
                   id="salaryMax"
                   type="number"
-                  placeholder="120000"
+                  placeholder="9000000"
                   value={formData.salaryMax}
                   onChange={(e) => updateFormData("salaryMax", e.target.value)}
                   required

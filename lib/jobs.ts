@@ -30,7 +30,7 @@ export const mockJobs: Job[] = [
     company: "TechCorp Inc.",
     location: "San Francisco, CA",
     type: "full-time",
-    salary: { min: 120000, max: 160000, currency: "USD" },
+    salary: { min: 10644000, max: 14192000, currency: "INR" }, // Converted
     description:
       "We are looking for a Senior Frontend Developer to join our dynamic team. You will be responsible for building user-facing features using modern web technologies.",
     requirements: [
@@ -62,7 +62,7 @@ export const mockJobs: Job[] = [
     company: "InnovateLabs",
     location: "New York, NY",
     type: "full-time",
-    salary: { min: 110000, max: 140000, currency: "USD" },
+    salary: { min: 9757000, max: 12418000, currency: "INR" }, // Converted
     description:
       "Join our product team to drive the development of cutting-edge software solutions. You will work closely with engineering, design, and business teams.",
     requirements: [
@@ -94,7 +94,7 @@ export const mockJobs: Job[] = [
     company: "DesignStudio Pro",
     location: "Austin, TX",
     type: "full-time",
-    salary: { min: 85000, max: 110000, currency: "USD" },
+    salary: { min: 7539500, max: 9757000, currency: "INR" }, // Converted
     description:
       "We are seeking a talented UX/UI Designer to create intuitive and beautiful user experiences for our digital products.",
     requirements: [
@@ -126,7 +126,7 @@ export const mockJobs: Job[] = [
     company: "DataFlow Systems",
     location: "Seattle, WA",
     type: "full-time",
-    salary: { min: 130000, max: 170000, currency: "USD" },
+    salary: { min: 11531000, max: 15079000, currency: "INR" }, // Converted
     description:
       "Join our backend team to build scalable and reliable systems that power our data processing platform.",
     requirements: [
@@ -158,7 +158,7 @@ export const mockJobs: Job[] = [
     company: "GrowthCo",
     location: "Chicago, IL",
     type: "full-time",
-    salary: { min: 55000, max: 70000, currency: "USD" },
+    salary: { min: 4878500, max: 6209000, currency: "INR" }, // Converted
     description:
       "Support our marketing team in executing campaigns and driving brand awareness across multiple channels.",
     requirements: [
@@ -190,7 +190,7 @@ export const mockJobs: Job[] = [
     company: "CloudTech Solutions",
     location: "Remote",
     type: "full-time",
-    salary: { min: 115000, max: 145000, currency: "USD" },
+    salary: { min: 10190500, max: 12861500, currency: "INR" }, // Converted
     description:
       "Help us build and maintain robust infrastructure and deployment pipelines for our cloud-native applications.",
     requirements: [
@@ -217,69 +217,4 @@ export const mockJobs: Job[] = [
     skills: ["Kubernetes", "Docker", "AWS", "Terraform", "CI/CD"],
   },
 ]
-
-export function searchJobs(
-  query = "",
-  location = "",
-  type = "",
-  experienceLevel = "",
-  remote: boolean | null = null,
-): Job[] {
-  return mockJobs.filter((job) => {
-    const matchesQuery =
-      !query ||
-      job.title.toLowerCase().includes(query.toLowerCase()) ||
-      job.company.toLowerCase().includes(query.toLowerCase()) ||
-      job.skills.some((skill) => skill.toLowerCase().includes(query.toLowerCase())) ||
-      job.department.toLowerCase().includes(query.toLowerCase())
-
-    const matchesLocation = !location || job.location.toLowerCase().includes(location.toLowerCase())
-
-    const matchesType = !type || job.type === type
-
-    const matchesExperience = !experienceLevel || job.experienceLevel === experienceLevel
-
-    const matchesRemote = remote === null || job.remote === remote
-
-    return matchesQuery && matchesLocation && matchesType && matchesExperience && matchesRemote
-  })
-}
-
-export function getFeaturedJobs(): Job[] {
-  return mockJobs.filter((job) => job.featured).slice(0, 3)
-}
-
-export function getJobById(id: string): Job | undefined {
-  return mockJobs.find((job) => job.id === id)
-}
-
-export function getJobsByEmployer(employerId: string): Job[] {
-  return mockJobs.filter((job) => job.employerId === employerId)
-}
-
-export function updateJob(jobId: string, updates: Partial<Job>): Job | null {
-  const jobIndex = mockJobs.findIndex((job) => job.id === jobId)
-  if (jobIndex === -1) return null
-
-  mockJobs[jobIndex] = { ...mockJobs[jobIndex], ...updates }
-  return mockJobs[jobIndex]
-}
-
-export function deleteJob(jobId: string): boolean {
-  const jobIndex = mockJobs.findIndex((job) => job.id === jobId)
-  if (jobIndex === -1) return false
-
-  mockJobs.splice(jobIndex, 1)
-  return true
-}
-
-export function createJob(jobData: Omit<Job, "id" | "postedDate">): Job {
-  const newJob: Job = {
-    id: Date.now().toString(),
-    postedDate: new Date(),
-    ...jobData,
-  }
-
-  mockJobs.unshift(newJob)
-  return newJob
-}
+// ... rest of the file

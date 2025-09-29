@@ -35,7 +35,7 @@ export function EmployerJobList({ jobs, onEdit, onDelete, onViewApplications }: 
   }
 
   const formatSalary = (min: number, max: number, currency: string) => {
-    const formatter = new Intl.NumberFormat("en-US", {
+    const formatter = new Intl.NumberFormat("en-IN", { // Changed to en-IN for Indian Rupees
       style: "currency",
       currency,
       minimumFractionDigits: 0,
